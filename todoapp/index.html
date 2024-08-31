@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Todo List</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="header">
+        <!-- Task Input Section -->
+        <div class="task-input">
+            <input type="text" id="new-task" placeholder="Enter a new task" />
+            <button onclick="addTask()">Add</button>
+        </div>
+    </div>
+
+    <div class="container">
+        <!-- Backlog Card -->
+        <div class="card backlog">
+            <h2>Backlog</h2>
+            <ul id="backlog-list" class="todo-list"></ul>
+            <div class="buttons">
+                <button class="left" disabled>&lt;</button>
+                <button class="right" onclick="moveToNext('backlog-list', 'todo-list')">&gt;</button>
+            </div>
+        </div>
+
+        <!-- To Do Card -->
+        <div class="card todo">
+            <h2>To Do</h2>
+            <ul id="todo-list" class="todo-list"></ul>
+            <div class="buttons">
+                <button class="left" onclick="moveToPrev('todo-list', 'backlog-list')">&lt;</button>
+                <button class="right" onclick="moveToNext('todo-list', 'ongoing-list')">&gt;</button>
+            </div>
+        </div>
+
+        <!-- Ongoing Card -->
+        <div class="card ongoing">
+          <h2>Ongoing</h2>
+          <ul id="ongoing-list" class="todo-list"></ul>
+          <div class="buttons">
+              <button class="left" onclick="moveToPrev('ongoing-list', 'todo-list')">&lt;</button>
+              <button class="right" onclick="moveToNext('ongoing-list', 'done-list')">&gt;</button>
+          </div>
+      </div>
+
+      <!-- Done Card -->
+      <div class="card done">
+          <h2>Done</h2>
+          <ul id="done-list" class="todo-list"></ul>
+          <div class="buttons">
+              <button class="left" onclick="moveToPrev('done-list', 'ongoing-list')">&lt;</button>
+              <button class="right" disabled>&gt;</button>
+          </div>
+      </div>
+  </div>
+  <script src="script.js"></script>
+</body>
+</html>

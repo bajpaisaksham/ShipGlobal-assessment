@@ -1,0 +1,115 @@
+/* Reset default margins and paddings */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Body styling */
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  padding: 20px;
+  background-color: #f0f2f5;
+}
+
+/* Section styling for the entire accordion */
+section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Accordion styling */
+.accordion-section {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+/* Remove border from the last section */
+.accordion-section:last-child {
+  border-bottom: none;
+}
+
+/* Accordion header styling */
+.accordion {
+  width: 100%;
+  background: linear-gradient(135deg, #4a90e2, #0033a0); /* Blue gradient */
+  padding: 20px;
+  cursor: pointer;
+  font-weight: bold;
+  color: #ffffff;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: background 0.4s ease, color 0.4s ease;
+  position: relative;
+  border: none;
+  outline: none;
+}
+
+.accordion:hover {
+  background: linear-gradient(135deg, #0033a0, #4a90e2); /* Reversed blue gradient on hover */
+}
+
+.accordion::after {
+  content: '▼';
+  font-size: 1.5em;
+  transition: transform 0.4s ease, color 0.3s ease;
+}
+
+.accordion.active::after {
+  transform: rotate(-180deg); /* Rotate icon */
+  color: #fff4e0; /* Slightly lighter color for the rotated state */
+}
+
+/* Accordion Content */
+.accordion-content {
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.5s ease-out, padding 0.3s ease-out;
+  background-color: #ffffff;
+  padding: 0 20px;
+}
+
+.accordion-content.open {
+  max-height: 300px;
+  padding: 20px;
+  border-top: 1px solid #e0e0e0;
+}
+
+.accordion-content p {
+  font-size: 16px;
+  line-height: 1.7;
+  color: #555555;
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+.image-container {
+  width: 20%;
+  align-items: center;
+  height: 20;  /* Maintain aspect ratio */
+  display: block; /* Ensure the image is a block-level element */
+  margin-bottom: 20px; /* Space below the image */
+  border-bottom: 5px solid #009688; /* Decorative border at the bottom */
+  border-radius: 50px;
+  margin-left: 600px;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Responsive styling */
+@media (max-width: 600px) {
+  .accordion {
+    font-size: 14px;
+    padding: 15px;
+  }
+
+  .accordion-content {
+    padding: 0 15px;
+  }
+}
